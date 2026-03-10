@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================================
+   DESIGN SYSTEM — Vistara Premium Prop-Tech Platform
+   Theme: Clean, bright, sophisticated — white/silver/soft-blue palette
+   All colors in HSL format
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* --- Core palette (bright premium theme) --- */
+    --background: 220 20% 97%;
+    --foreground: 220 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 12%;
+
+    /* --- Brand: Deep Navy Blue --- */
+    --primary: 215 80% 28%;
+    --primary-foreground: 0 0% 100%;
+
+    /* --- Accent: Soft Sky Blue --- */
+    --secondary: 205 85% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 15% 93%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 215 50% 94%;
+    --accent-foreground: 215 80% 28%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 90%;
+    --ring: 215 80% 28%;
+
+    --radius: 0.75rem;
+
+    /* --- Custom tokens --- */
+    --warm-gold: 38 70% 55%;
+    --soft-teal: 175 40% 50%;
+    --light-blue: 205 85% 92%;
+    --surface: 220 20% 98%;
+    --surface-hover: 220 15% 95%;
+    --glass-bg: 0 0% 100%;
+
+    /* --- Sidebar --- */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 25% 12%;
+    --sidebar-primary: 215 80% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 50% 94%;
+    --sidebar-accent-foreground: 215 80% 28%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 215 80% 28%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  /* --- Glassmorphism surface --- */
+  .glass {
+    background: hsl(var(--glass-bg) / 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .glass-strong {
+    background: hsl(var(--glass-bg) / 0.9);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid hsl(var(--border) / 0.6);
+    box-shadow: 0 8px 32px hsl(var(--primary) / 0.04);
+  }
+
+  /* --- Elegant card shadow --- */
+  .card-elegant {
+    box-shadow: 0 1px 3px hsl(var(--foreground) / 0.04),
+                0 8px 24px hsl(var(--primary) / 0.06);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .card-elegant:hover {
+    box-shadow: 0 4px 12px hsl(var(--foreground) / 0.06),
+                0 16px 40px hsl(var(--primary) / 0.1);
+  }
+
+  /* --- Subtle gradient backgrounds --- */
+  .gradient-soft {
+    background: linear-gradient(135deg, hsl(var(--light-blue) / 0.5) 0%, hsl(var(--background)) 50%, hsl(var(--accent) / 0.3) 100%);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(180deg, hsl(var(--light-blue) / 0.4) 0%, hsl(var(--background)) 100%);
+  }
+
+  /* --- Accent underline for nav links --- */
+  .nav-link {
+    @apply relative transition-colors duration-300;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-[2px] scale-x-0 transition-transform duration-300 origin-right;
+    background: hsl(var(--primary));
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply scale-x-100 origin-left;
+  }
+
+  /* --- Section divider --- */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
+  }
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.3);
+}
